@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HI BABY</title>
+    <style>
+        :root {
+            --pink: #ff85a2;
+            --dark-pink: #ef476f;
+            --bg-color: #ffffff;
+        }
+
+
+        
+
+.main-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end; /* Keeps them on the same 'ground' line */
+  justify-content: center;
+  gap: 60px; /* Space between gallery and envelope */
+  width: 100%;
+  max-width: 1200px;
+}
+
+.gallery {
+  --d: 10s;
+  /* duration */
+  display: grid;
+  place-items: center; /* Center both horizontally and vertically */
+  width: 220px;
+}
+
+.gallery > img {
+  grid-area: 1/1;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 10px solid #f2f2f2;
+  box-shadow: 0 0 4px #0007;
+  z-index: 2;
+  animation: slide var(--d) infinite, z-order var(--d) infinite steps(1);
+}
+
+.gallery img:last-child {
+  animation-name: slide, z-order-last;
+}
+
+.gallery > img:nth-child(1) {
+  animation-delay: calc(0*var(--d));
+  --r: 16deg;
+}
+
+.gallery > img:nth-child(2) {
+  animation-delay: calc(-0.2*var(--d));
+  --r: -1deg;
+}
+
+.gallery > img:nth-child(3) {
+  animation-delay: calc(-0.4*var(--d));
+  --r: -19deg;
+}
+
+.gallery > img:nth-child(4) {
+  animation-delay: calc(-0.6*var(--d));
+  --r: 6deg;
+}
+
+.gallery > img:nth-child(5) {
+  animation-delay: calc(-0.8*var(--d));
+  --r: -8deg;
+}
+
+@keyframes slide {
+  10% {
+    transform: translateX(120%) rotate(var(--r));
+  }
+  0%, 100%, 20% {
+    transform: translateX(0%) rotate(var(--r));
+  }
+}
+
+@keyframes z-order {
+  10%, 20% {
+    z-index: 1;
+  }
+  80% {
+    z-index: 2;
+  }
+}
+
+@keyframes z-order-last {
+  10%, 20% {
+    z-index: 1;
+  }
+  90% {
+    z-index: 2;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  background: #f8f6f1;
+  overflow: hidden;
+}
+
+#hedlinecontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 60px;
+}
+
+#shine {
+  font-size: 60px;
+  font-weight: bold;
+  color: rgba(255, 0, 102, 0.3);
+  z-index: 10;
+  background: -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff)) 0 0 no-repeat;
+  -webkit-background-size: 150px;
+  -webkit-background-clip: text;
+  -webkit-animation-name: shine;
+  -webkit-animation-duration: 3s; /* Adjust the duration as needed */
+  -webkit-animation-iteration-count: infinite;
+  text-shadow: 0 0px 0px rgba(233, 85, 189, 0.419);
+
+}
+
+@-webkit-keyframes shine {
+  0%, 10% {
+    background-position: -1000px;
+  }
+  20% {
+    background-position: top left;
+  }
+  90% {
+    background-position: top right;
+  }
+  100% {
+    background-position: 1000px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #shine {
+  font-size: 22px;
+}
+#hedlinecontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 60px;
+}
+
+.gallery {
+  --d: 10s;
+  /* duration */
+  display: grid;
+  place-items: center; /* Center both horizontally and vertically */
+  width: 150px;
+  margin-left: 60px;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* 1. Page Layout */
+#page8 {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+#page8.active {
+    display: flex !important;
+}
+
+.coupon-title {
+    font-family: 'Arial Black', sans-serif;
+    color: #a03020;
+    font-size: 35px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+
+/* 1. The Box: Forces the rectangular 'Ticket' shape */
+.coupon-display {
+    width: 450px !important; 
+    height: 250px !important;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    display: grid !important; /* Force grid layout */
+    place-items: stretch !important; /* Force content to stretch to edges */
+    padding: 0 !important;
+    margin: 0 !important;
+    position: relative;
+}
+
+/* 2. The Image: Kills all 'natural' proportions */
+.coupon-display img {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 100% !important; /* Forces width */
+    min-height: 100% !important; /* Forces height */
+    object-fit: fill !important; /* Stretches pixels to eliminate white gaps */
+    display: block !important;
+}
+
+/* 3. The Layout: Ensures arrows stay on the same line */
+.coupon-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 20px;
+    width: 100%;
+}
+
+.nav-arrow {
+    background-color: #a03020; /* Deep red to match the theme */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border: none;
+}
+
+.nav-arrow:hover {
+    background-color: #7a1d12;
+    transform: scale(1.1);
+}
+
+.nav-arrow:active {
+    transform: scale(0.9);
+}
+
+/* Specific flip for the left arrow so it points the right way */
+.left-arrow {
+    transform: scaleX(-1);
+}
+
+.left-arrow:hover {
+    transform: scaleX(-1) scale(1.1);
+}
+
+.left-arrow:active {
+    transform: scaleX(-1) scale(0.9);
+}
+
+.final-next-btn {
+    margin-top: 40px;
+    padding: 12px 40px;
+    background-color: #7a1d12;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.text-bg {
+    background-color: transparent;/* No more cut-off boxes! */
+    /* This creates a thick white glow around every letter */
+    text-shadow: 
+        0 0 10px white, 
+        0 0 20px white, 
+        0 0 30px white;
+    padding: 10px;
+}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .love-background {
+            background-color: white;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='100' viewBox='0 0 150 100'%3E%3Ctext x='10' y='40' font-family='Arial, sans-serif' font-size='16' font-style='italic' fill='%23000' fill-opacity='0.8'%3EI love you%3C/text%3E%3Ctext x='80' y='80' font-family='Arial, sans-serif' font-size='16' font-style='italic' fill='%23000' fill-opacity='0.8'%3EI love you%3C/text%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .page {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .active { display: flex; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        h1 { color: #333; font-size: 1.5rem; margin-bottom: 20px; }
+        .accent { color: var(--dark-pink); }
+
+        img {
+            max-width: 250px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 10px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            background-color: var(--pink);
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .page.active {
+    display: flex; /* Or 'block' depending on your layout */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+        button:hover { transform: scale(1.1); background-color: var(--dark-pink); }
+
+        /* Gift Page Styles */
+        .gifts { display: flex; gap: 15px; margin-top: 20px; }
+        .gift-box {
+            cursor: pointer;
+            transition: 0.3s;
+            width: 150px;
+        }
+        .gift-box:hover { transform: translateY(-10px); }
+
+        /* Envelope / Letter Styles */
+        .envelope-container { position: relative; width: 300px; height: 200px; background: #2196f3; border-radius: 5px; margin-top: 50px;}
+        .letter {
+            background: white;
+            padding: 15px;
+            width: 80%;
+            position: absolute;
+            bottom: 20px;
+            left: 10%;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+            font-size: 0.8rem;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        /* Coupon Styles */
+        .coupon {
+            background: #fff0f3;
+            border: 2px dashed var(--dark-pink);
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="page1" class="page active">
+            <h1 class="accent" style="font-size: 40px; white-space: nowrap;">HELLO CUTIE <br> I made something for you :)</h1>
+            <p style="font-size:25px; font-weight: bolder;">DO YOU WANNA SEE ??
+            </p>
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueXF4ZzRreXF4ZzRreXF4ZzRreXF4ZzRreXF4ZzRreCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="cute animation">
+            <div class="btn-group">
+                <button onclick="nextPage(3)">YES</button>
+                <button onclick="nextPage(2)">NO</button>
+            </div>
+        </div>
+
+        <div id="page2" class="page">
+            <h1 class="accent" style="font-size: 30px;">HOW DARE YOU!</h1>
+            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExYnhvZzZuMXJqMmQ5ZzV2M2dqbjE0a2l0N3A5cTF0N2JpZmtkYzRhdCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/aWMJvA76tNnBR9gkpT/giphy.gif" alt="angry cat">
+            <button onclick="nextPage(1)">TRY AGAIN</button>
+        </div>
+
+        <div id="page3" class="page">
+            <h1 class="accent" style="font-size: 30px;">THATS MY GOODGIRL :)</h1>
+            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDY0Z2ozcmpzNXJtZ215YmNuNzJ6bXh4cDF3MHUxZjF4ZmV5bndjMiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/VbKLOdvCxBFNZpYvhL/giphy.gif" alt="cute anime couple">
+            <div class="btn-group">
+              <button onclick="nextPage(4)">NEXT</button>
+              <button onclick="nextPage(1)">BACK</button>
+                
+              
+            </div>
+        </div>
+
+        <div id="page4" class="page">
+            <h1 class="accent" style="font-size: 40px; white-space: nowrap;">
+              <span class="text-bg">WILL YOU BE MY VALENTINE !!!!</span></h1>
+            <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExeHF0ODF3MXBtcmdqM3hndzE5M2ZoZHRpOHFrZXQ0ZGtxMWc4M2RjYyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wvYNSqBAMDVx8CEYkt/giphy.gif" alt="cat asking">
+            <div class="btn-group">
+                <button onclick="nextPage(6)">YES</button>
+                <button id="noButton" onmouseover="moveNoButton()" onclick="nextPage(5)">NO</button>
+              
+            </div>
+        </div>
+
+        <div id="page5" class="page">
+            <h1 class="accent">Did you say no?</h1>
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZueXF4ZzRreXF4ZzRreXF4ZzRreXF4ZzRreXF4ZzRreCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/v1.Y2lkPTc5MGI3NjExNHJueGZueXF4ZzRreXF4ZzRreXF4ZzRreXF4ZzRreXF4ZzRreCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/T3nwQFJqYeefUs7zEa/giphy.gif" alt="sad cat">
+            <button onclick="nextPage(4)">TRY AGAIN</button>
+        </div>
+
+        <div id="page6" class="page">
+            <h1 class="accent" style="font-size: 40px;">A GIFT FOR CHEEKU </h1>
+            <p style="font-size: 20px;">CLICK ANY FOR A SUPRISE</p>
+            <div class="gifts">
+                <img src="https://cdn-icons-png.flaticon.com/512/15674/15674883.png" class="gift-box" onclick="nextPage(7)">
+                <img src="https://cdn-icons-png.flaticon.com/512/15674/15674883.png" class="gift-box" onclick="nextPage(8)">
+                <img src="https://cdn-icons-png.flaticon.com/512/15674/15674883.png" class="gift-box" onclick="nextPage(9)">
+            </div>
+        </div>
+
+<div id="page7" class="page">
+
+  <div id="hedlinecontainer">
+   <div id="shine" style="white-space: nowrap;">WILL U BE MY VALENTINE 💞</div> 
+  </div>
+  
+
+  <div class="gallery">
+    <img src="https://i.postimg.cc/3R9B6CgD/IMAGE1.jpg" alt="her 1">
+    <img src="https://i.postimg.cc/XJx8hcwK/IMAGE2.jpg" alt="her 2">
+    <img src="https://i.postimg.cc/j5vX9Qz4/IMAGE3.jpg" alt="her 3">
+    <img src="https://i.postimg.cc/ZqkzK3WS/IMG_0745.avif" alt="her 4">
+    <img src="https://i.postimg.cc/TP8vYmpF/IMG_2017.avif" alt="her 5">
+  </div>
+
+
+  <div class="btn-group" style="margin-top:70px ;">
+              <button onclick="nextPage(6)">NEXT</button>
+                     
+  </div>
+</div>
+      
+       <div id="page8" class="page">
+<h2 id="couponTitle" class="love-coupon-title" style="font-size: 40px; white-space: nowrap"> COUPONS FOR YOU !!</h2>
+<div class="coupon-container">
+    <button class="nav-arrow" onclick="prevCoupon()">➜</button>
+    
+    <div class="coupon-display" style="border: none; background: none; box-shadow: none;">
+        <img id="couponImage" src="https://i.postimg.cc/8zvM6QPq/COUPON_2.png" onclick="redeemCoupon()" style="width: 450px; height: auto;">
+    </div>
+    
+    <button class="nav-arrow" onclick="nextCoupon()">➜</button>
+</div>
+
+    <button class="final-next-btn" onclick="nextPage(6)">NEXT(CLICK COUPONS)</button>
+</div>
+
+<div id="page9" class="page">
+  <h1 style="font-size:60px ; color: black; white-space: nowrap;">MY GORGEOUS GIRLFRIEND</h1>
+  <h1 style="color: #ff85a2;"> YOU MUST BE WONDERING THERE IS NOTHING HERE WELL 
+    I JUST WANTED TO WRITE MY HEART OUT IN THIS ONE. I KNOW I AM NOT SUPPOSE TO GIFT 
+    ANYTHING THIS VALENTINE BECAUSE I ALREADY SPENT A LOT BUT I HOPE THIS WEBSITE MAKES U SMILE MY 
+    CODING SUCKS BUT FOR YOU I GAVE IT MY BEST CUTU I LOVE YOU MORE THAN ANYTHING ON THIS PLANET AND
+     I WILL NEVER STOP BECAUSE YOU ARE MY FREAKIN WORLD AND NOTHING ELSE EVER WILL MATTER TO ME OTHER THAN YOU AND UR
+     ADORABLE SMILE ONE LAST TIME I LOVE YOU SO FUCKING MUCH <BR> <BR></h1> <h1 style="color: #ff85a2;">YOURS SHAURYA :)</h1>
+
+          <button class="final-next-btn" onclick="MAINFUNC()">THE END</button>
+
+</div>
+
+    </div>
+
+    <script>
+function nextPage(pageNumber) {
+    // 1. Hide all pages
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+
+    // 2. Show the current page
+    const currentPage = document.getElementById('page' + pageNumber);
+    currentPage.classList.add('active');
+
+    // 3. Logic for the background pattern
+    // If it's page 4 (the Valentine question), add the pattern to the body
+    if (pageNumber === 4) {
+        document.body.classList.add('love-background');
+    } else {
+        document.body.classList.remove('love-background');
+    }
+}
+
+
+// List of your coupon images
+const coupons = [
+  "https://i.postimg.cc/8zvM6QPq/COUPON_2.png ",
+    "https://i.postimg.cc/tCwFJCpX/coupon_3.png",
+     "https://i.postimg.cc/HsRbnsdY/COUPON_1.png",
+    "https://i.postimg.cc/65gCq5tB/coupon_4.png"
+];
+
+let currentCouponIndex = 0;
+
+function updateCouponDisplay() {
+    const imgElement = document.getElementById("couponImage");
+    const titleElement = document.getElementById("couponTitle");
+
+    // Update Image
+    imgElement.src = coupons[currentCouponIndex];
+    
+    // Update Text
+    titleElement.innerText = couponTitles[currentCouponIndex];
+    
+    console.log("Switched to index:", currentCouponIndex); // Check your browser console!
+}
+
+function nextCoupon() {
+    currentCouponIndex = (currentCouponIndex + 1) % coupons.length;
+    updateCouponDisplay();
+}
+
+function prevCoupon() {
+    currentCouponIndex = (currentCouponIndex - 1 + coupons.length) % coupons.length;
+    updateCouponDisplay();
+}
+
+function redeemCoupon() {
+    // You can even make the message change based on the title!
+    let currentTitle = document.getElementById("couponTitle").innerText;
+    alert("You just redeemed: " + currentTitle + "! Can't wait! 🥰");
+}
+
+function MAINFUNC () {
+alert ("BABY U HAVE REACHED THE END OF THIS WEBSITE NOW CALL ON +91-8826599600")
+}
+
+const couponTitles = [
+  "FREE HUGS COUPON", 
+    "FREE KISS COUPON", 
+    "FREE SLEEP COUPON", 
+    "FREE CUDDLE COUPON",
+    
+];
+
+// Keep your moving button function here too
+function moveNoButton() {
+    const btn = document.getElementById('noButton');
+    const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+    btn.style.position = 'absolute';
+    btn.style.left = x + 'px';
+    btn.style.top = y + 'px';
+}
+    </script>
+</body>
+</html>
