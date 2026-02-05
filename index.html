@@ -608,6 +608,16 @@ const couponTitles = [
     
 ];
 
+const coupons = [  "https://i.postimg.cc/8zvM6QPq/COUPON_2.png ",
+    "https://i.postimg.cc/tCwFJCpX/coupon_3.png",
+     "https://i.postimg.cc/HsRbnsdY/COUPON_1.png",
+    "https://i.postimg.cc/65gCq5tB/coupon_4.png"]; // Use your actual filenames or URLs here
+
+coupons.forEach((image) => {
+    const img = new Image();
+    img.src = image;
+});
+
 // Keep your moving button function here too
 function moveNoButton() {
     const btn = document.getElementById('noButton');
