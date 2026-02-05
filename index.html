@@ -11,20 +11,24 @@
             --bg-color: #ffffff;
         }
 
+
+        
+
 .main-content-wrapper {
   display: flex;
   flex-direction: row;
-  align-items: flex-end; 
+  align-items: flex-end; /* Keeps them on the same 'ground' line */
   justify-content: center;
-  gap: 60px; 
+  gap: 60px; /* Space between gallery and envelope */
   width: 100%;
   max-width: 1200px;
 }
 
 .gallery {
   --d: 10s;
+  /* duration */
   display: grid;
-  place-items: center; 
+  place-items: center; /* Center both horizontally and vertically */
   width: 220px;
 }
 
@@ -121,7 +125,7 @@ body {
   -webkit-background-size: 150px;
   -webkit-background-clip: text;
   -webkit-animation-name: shine;
-  -webkit-animation-duration: 3s; 
+  -webkit-animation-duration: 3s; /* Adjust the duration as needed */
   -webkit-animation-iteration-count: infinite;
   text-shadow: 0 0px 0px rgba(233, 85, 189, 0.419);
 
@@ -150,19 +154,32 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
   margin-bottom: 60px;
 }
 
 .gallery {
   --d: 10s;
+  /* duration */
   display: grid;
-  place-items: center; 
+  place-items: center; /* Center both horizontally and vertically */
   width: 150px;
   margin-left: 60px;
 }
 }
 
-/* Page Layout */
+
+
+
+
+
+
+
+
+
+
+
+/* 1. Page Layout */
 #page8 {
     display: none;
     flex-direction: column;
@@ -177,26 +194,41 @@ body {
     display: flex !important;
 }
 
+.coupon-title {
+    font-family: 'Arial Black', sans-serif;
+    color: #a03020;
+    font-size: 35px;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+
+/* 1. The Box: Forces the rectangular 'Ticket' shape */
 .coupon-display {
     width: 450px !important; 
     height: 250px !important;
     background: white;
     border-radius: 15px;
     overflow: hidden;
-    display: grid !important; 
-    place-items: stretch !important; 
+    display: grid !important; /* Force grid layout */
+    place-items: stretch !important; /* Force content to stretch to edges */
     padding: 0 !important;
     margin: 0 !important;
     position: relative;
 }
 
+/* 2. The Image: Kills all 'natural' proportions */
 .coupon-display img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: fill !important; 
+    min-width: 100% !important; /* Forces width */
+    min-height: 100% !important; /* Forces height */
+    object-fit: fill !important; /* Stretches pixels to eliminate white gaps */
     display: block !important;
 }
 
+/* 3. The Layout: Ensures arrows stay on the same line */
 .coupon-container {
     display: flex !important;
     align-items: center !important;
@@ -206,7 +238,7 @@ body {
 }
 
 .nav-arrow {
-    background-color: #a03020; 
+    background-color: #a03020; /* Deep red to match the theme */
     color: white;
     width: 60px;
     height: 60px;
@@ -217,7 +249,32 @@ body {
     font-size: 35px;
     font-weight: bold;
     cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     border: none;
+}
+
+.nav-arrow:hover {
+    background-color: #7a1d12;
+    transform: scale(1.1);
+}
+
+.nav-arrow:active {
+    transform: scale(0.9);
+}
+
+/* Specific flip for the left arrow so it points the right way */
+.left-arrow {
+    transform: scaleX(-1);
+}
+
+.left-arrow:hover {
+    transform: scaleX(-1) scale(1.1);
+}
+
+.left-arrow:active {
+    transform: scaleX(-1) scale(0.9);
 }
 
 .final-next-btn {
@@ -231,84 +288,134 @@ body {
     cursor: pointer;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .text-bg {
-    background-color: transparent;
+    background-color: transparent;/* No more cut-off boxes! */
+    /* This creates a thick white glow around every letter */
     text-shadow: 
         0 0 10px white, 
         0 0 20px white, 
         0 0 30px white;
     padding: 10px;
 }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--bg-color);
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    text-align: center;
-}
+        .love-background {
+            background-color: white;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='100' viewBox='0 0 150 100'%3E%3Ctext x='10' y='40' font-family='Arial, sans-serif' font-size='16' font-style='italic' fill='%23000' fill-opacity='0.8'%3EI love you%3C/text%3E%3Ctext x='80' y='80' font-family='Arial, sans-serif' font-size='16' font-style='italic' fill='%23000' fill-opacity='0.8'%3EI love you%3C/text%3E%3C/svg%3E");
+            background-repeat: repeat;
+        }
 
-.love-background {
-    background-color: white;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='100' viewBox='0 0 150 100'%3E%3Ctext x='10' y='40' font-family='Arial, sans-serif' font-size='16' font-style='italic' fill='%23000' fill-opacity='0.8'%3EI love you%3C/text%3E%3Ctext x='80' y='80' font-family='Arial, sans-serif' font-size='16' font-style='italic' fill='%23000' fill-opacity='0.8'%3EI love you%3C/text%3E%3C/svg%3E");
-    background-repeat: repeat;
-}
+        .container {
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+        }
 
-.container {
-    width: 90%;
-    max-width: 600px;
-    padding: 20px;
-}
+        .page {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.5s ease-in;
+        }
 
-.page {
-    display: none;
+        .active { display: flex; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        h1 { color: #333; font-size: 1.5rem; margin-bottom: 20px; }
+        .accent { color: var(--dark-pink); }
+
+        img {
+            max-width: 250px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 10px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            background-color: var(--pink);
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .page.active {
+    display: flex; /* Or 'block' depending on your layout */
     flex-direction: column;
     align-items: center;
-    animation: fadeIn 0.5s ease-in;
-}
-
-.active { display: flex; }
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-h1 { color: #333; font-size: 1.5rem; margin-bottom: 20px; }
-.accent { color: var(--dark-pink); }
-
-img {
-    max-width: 250px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-}
-
-.btn-group {
-    display: flex;
-    gap: 20px;
     justify-content: center;
 }
 
-button {
-    padding: 10px 30px;
-    font-size: 1rem;
-    font-weight: bold;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    background-color: var(--pink);
-    color: white;
-    text-transform: uppercase;
-}
+        button:hover { transform: scale(1.1); background-color: var(--dark-pink); }
 
-.gifts { display: flex; gap: 15px; margin-top: 20px; }
-.gift-box {
-    cursor: pointer;
-    transition: 0.3s;
-    width: 150px;
-}
-</style>
+        /* Gift Page Styles */
+        .gifts { display: flex; gap: 15px; margin-top: 20px; }
+        .gift-box {
+            cursor: pointer;
+            transition: 0.3s;
+            width: 150px;
+        }
+        .gift-box:hover { transform: translateY(-10px); }
+
+        /* Envelope / Letter Styles */
+        .envelope-container { position: relative; width: 300px; height: 200px; background: #2196f3; border-radius: 5px; margin-top: 50px;}
+        .letter {
+            background: white;
+            padding: 15px;
+            width: 80%;
+            position: absolute;
+            bottom: 20px;
+            left: 10%;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+            font-size: 0.8rem;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        /* Coupon Styles */
+        .coupon {
+            background: #fff0f3;
+            border: 2px dashed var(--dark-pink);
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+        }
+    </style>
 </head>
 <body>
 
